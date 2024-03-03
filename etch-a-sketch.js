@@ -1,6 +1,6 @@
 const container = document.querySelector('.container');
 
-
+createGrid(16);
 
 
 // Create the grid
@@ -8,6 +8,8 @@ function createGrid(num){
   if(num>100){
     return 'Error';
   }
+
+  container.innerHTML = '';
   for(let i = 0; i<num; i++){
 
     const row = document.createElement('div');
@@ -19,19 +21,21 @@ function createGrid(num){
     }
     container.appendChild(row);
   }
+
+    //hover effect
+  const cells = document.querySelectorAll('.cell');
+  cells.forEach((cell) => {
+    cell.addEventListener('mouseover', () => {
+      cell.style.backgroundColor = 'red';
+    });
+
+    cell.addEventListener('mouseout', () => {
+      cell.style.backgroundColor = '';
+    });
+  });
 }
 
-//hover effect
-const cells = document.querySelectorAll('.cell');
-cells.forEach((cell) => {
-  cell.addEventListener('mouseover', () => {
-    cell.style.backgroundColor = 'red';
-  });
 
-  cell.addEventListener('mouseout', () => {
-    cell.style.backgroundColor = '';
-  });
-});
 
 
 // Button event handle
@@ -39,6 +43,4 @@ const btn = document.querySelector('.btn');
 btn.addEventListener('click', () => {
   const numOfCells = parseInt(prompt('Input the number of squares per side for the new grid'));
   createGrid(numOfCells);
-
-
 });
