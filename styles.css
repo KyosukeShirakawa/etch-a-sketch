@@ -1,9 +1,16 @@
 .container {
   display: flex;
-  background-color: antiquewhite;
+  flex-direction: column;
+  width: 560px;
+}
+
+.row {
+
+  display: flex;
 
 }
 
 .cell {
-
+  flex: 1;
+  background-color: beige;
 }
